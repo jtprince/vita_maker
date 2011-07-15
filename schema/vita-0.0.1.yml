@@ -1,0 +1,50 @@
+---
+type: seq
+sequence:
+  - type: map
+    mapping:
+      'section': 
+        type: str
+        required: yes
+      'text':
+        type: str
+        desc: text to display (for title?)
+      'subtext':
+        type: str
+        desc: subtext to display (for title?)
+      'anchor':
+        type: str
+        desc: the string to display in menus (none of not given)
+      'events':
+        type: seq
+        sequence:
+          - type: map
+            mapping:
+              'name':
+                type: str
+                required: yes
+              'date':
+                type: str
+              'location':
+                type: str
+              'description':
+                type: any
+                sequence:
+                  type: str
+                  desc: bullet points
+      'references':
+        type: seq
+        sequence:
+          - type: map
+            mapping:
+              name:
+                type: str
+                required: yes
+              date:
+                type: str
+              location:
+                type: str
+              description:
+                type: any
+
+

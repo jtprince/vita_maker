@@ -15,6 +15,8 @@ sequence:
       'anchor':
         type: str
         desc: the string to display in menus (none of not given)
+      'spacing':
+        type: str
       'events':
         type: seq
         sequence:
@@ -24,15 +26,62 @@ sequence:
                 type: str
                 required: yes
               'date':
-                type: str
+                type: any
               'location':
                 type: str
               'description':
-                type: any
+                type: seq
                 sequence:
-                  type: str
-                  desc: bullet points
+                  - type: str
+                    desc: bullet points
+              'resume_duplicate':
+                type: map
+                mapping:
+                  'name':
+                    type: str
+                  'date':
+                    type: str
+                  'location':
+                    type: str
+                  'description':
+                    type: seq
+                    sequence:
+                      - type: str
+                        desc: bullet points
       'references':
+        type: seq
+        sequence:
+          - type: map
+            mapping:
+              bib_type:
+                type: str
+                required: yes
+              submission_type: 
+                type: str
+                enum: 
+                  - manuscript
+                  - invited
+              setting:
+                type: str
+              title:
+                type: str
+              authors:
+                type: str
+              journal:
+                type: str
+              year:
+                type: any
+              month:
+                type: str
+              invited:
+                type: bool
+              vol: 
+                type: any
+              pages:
+                type: any
+              'resume_duplicate':
+                type: bool
+      'proficiency_tables':
         type: seq
         sequence:
           - type: map
@@ -40,11 +89,71 @@ sequence:
               name:
                 type: str
                 required: yes
-              date:
+              proficiencies:
+                type: seq
+                sequence:
+                  - type: str
+      'contact_info':
+        type: map
+        mapping:
+          address:
+            type: seq
+            sequence:
+              - type: str
+                desc: address lines
+          work: 
+            type: str
+            desc: work telephone num
+          home:
+            type: str
+            desc: home telephone num
+          email:
+            pattern: /@/
+            type: str
+          resume_duplicate:
+            type: map
+            mapping:
+              address:
+                type: any
+              work: 
+                type: any
+              home:
+                type: any
+              email:
+                type: any
+      'personal_references':
+        type: seq
+        sequence:
+          - type: map
+            mapping:
+              name:
                 type: str
+                required: yes
+              address:
+                type: seq
+                sequence:
+                  - type: str
+                    desc: address lines
               location:
                 type: str
-              description:
-                type: any
+              office:
+                type: str
+                desc: office phone num
+              email:
+                pattern: /@/
+                type: str
+              resume_duplicate:
+                type: map
+                mapping:
+                  name:
+                    type: any
+                  address:
+                    type: any
+                  location:
+                    type: any
+                  office:
+                    type: any
+                  email:
+                    type: any
 
 
